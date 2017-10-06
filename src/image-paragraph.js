@@ -1,11 +1,8 @@
-define([
-    'ui/utils',
-    'core/extend',
-    'ui/widget'], function (
-        Ui,
-        extend,
-        Widget) {
-    function ImageParagraph(aElement, text, image, iconTextGap) {
+import Ui from 'kenga/utils';
+import Widget from 'kenga/widget';
+
+class ImageParagraph extends Widget {
+    constructor(aElement, text, image, iconTextGap) {
         if (arguments.length < 4)
             iconTextGap = 4;
         if (arguments.length < 3)
@@ -13,14 +10,14 @@ define([
         if (arguments.length < 2)
             text = '';
 
-        Widget.call(this, aElement);
+        super(aElement);
 
-        var self = this;
+        const self = this;
 
-        var horizontalTextPosition = Ui.HorizontalPosition.RIGHT;
-        var verticalTextPosition = Ui.VerticalPosition.CENTER;
+        let horizontalTextPosition = Ui.HorizontalPosition.RIGHT;
+        let verticalTextPosition = Ui.VerticalPosition.CENTER;
 
-        var paragraph = document.createElement('p');
+        const paragraph = document.createElement('p');
         paragraph.classList.add('p-paragraph');
         this.element.appendChild(paragraph);
 
@@ -43,28 +40,28 @@ define([
                     if (image) {
                         self.element.insertBefore(paragraph, image);
                         if (iconTextGap > 0 && text)
-                            image.style.marginTop = iconTextGap + 'px';
+                            image.style.marginTop = `${iconTextGap}px`;
                     }
                 } else if (verticalTextPosition === Ui.VerticalPosition.BOTTOM || verticalTextPosition === Ui.VerticalPosition.CENTER) {
                     if (image) {
                         self.element.insertBefore(image, paragraph);
                         if (iconTextGap > 0 && text)
-                            image.style.marginBottom = iconTextGap + 'px';
+                            image.style.marginBottom = `${iconTextGap}px`;
                     }
-                }// else // value of 'verticalTextPosition' is unknown
+                } // else // value of 'verticalTextPosition' is unknown
             } else {
                 self.element.classList.add('p-image-paragraph-row');
                 if (horizontalTextPosition === Ui.HorizontalPosition.LEFT) {
                     if (image) {
                         self.element.insertBefore(paragraph, image);
                         if (iconTextGap > 0 && text)
-                            image.style.marginLeft = iconTextGap + 'px';
+                            image.style.marginLeft = `${iconTextGap}px`;
                     }
                 } else if (horizontalTextPosition === Ui.HorizontalPosition.RIGHT) {
                     if (image) {
                         self.element.insertBefore(image, paragraph);
                         if (iconTextGap > 0 && text)
-                            image.style.marginRight = iconTextGap + 'px';
+                            image.style.marginRight = `${iconTextGap}px`;
                     }
                 } // else // value of 'horizontalTextPosition' is unknown
                 if (verticalTextPosition === Ui.VerticalPosition.TOP) {
@@ -75,7 +72,7 @@ define([
             }
         }
 
-        function applyText(){
+        function applyText() {
             paragraph.innerText = text;
         }
 
@@ -83,10 +80,10 @@ define([
         applyText();
 
         Object.defineProperty(this, 'icon', {
-            get: function () {
+            get: function() {
                 return image;
             },
-            set: function (aValue) {
+            set: function(aValue) {
                 if (image !== aValue) {
                     if (image) {
                         image.classList.remove('p-image');
@@ -102,10 +99,10 @@ define([
             }
         });
         Object.defineProperty(this, "text", {
-            get: function () {
+            get: function() {
                 return text;
             },
-            set: function (aValue) {
+            set: function(aValue) {
                 if (text !== aValue) {
                     text = aValue;
                     applyText();
@@ -113,10 +110,10 @@ define([
             }
         });
         Object.defineProperty(this, "iconTextGap", {
-            get: function () {
+            get: function() {
                 return iconTextGap;
             },
-            set: function (aValue) {
+            set: function(aValue) {
                 iconTextGap = aValue;
             }
         });
@@ -124,10 +121,10 @@ define([
          * Horizontal position of the text relative to the icon.
          */
         Object.defineProperty(this, "horizontalTextPosition", {
-            get: function () {
+            get: function() {
                 return horizontalTextPosition;
             },
-            set: function (aValue) {
+            set: function(aValue) {
                 if (horizontalTextPosition !== aValue) {
                     horizontalTextPosition = aValue;
                     applyPosition();
@@ -139,10 +136,10 @@ define([
          * Vertical position of the text relative to the icon.
          */
         Object.defineProperty(this, "verticalTextPosition", {
-            get: function () {
+            get: function() {
                 return verticalTextPosition;
             },
-            set: function (aValue) {
+            set: function(aValue) {
                 if (verticalTextPosition !== aValue) {
                     verticalTextPosition = aValue;
                     applyPosition();
@@ -150,6 +147,6 @@ define([
             }
         });
     }
-    extend(ImageParagraph, Widget);
-    return ImageParagraph;
-});
+}
+
+export default ImageParagraph;

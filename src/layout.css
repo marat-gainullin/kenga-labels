@@ -1,3 +1,5 @@
+@import 'node_modules/kenga/layout.css';
+
 .p-image-paragraph-layers > .p-image,
 .p-image-paragraph-layers > .p-paragraph {
     margin: auto;
