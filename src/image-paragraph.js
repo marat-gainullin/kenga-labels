@@ -80,10 +80,10 @@ class ImageParagraph extends Widget {
         applyText();
 
         Object.defineProperty(this, 'icon', {
-            get: function() {
+            get: function () {
                 return image;
             },
-            set: function(aValue) {
+            set: function (aValue) {
                 if (image !== aValue) {
                     if (image) {
                         image.classList.remove('p-image');
@@ -98,33 +98,33 @@ class ImageParagraph extends Widget {
                 }
             }
         });
-        Object.defineProperty(this, "text", {
-            get: function() {
+        Object.defineProperty(this, 'text', {
+            get: function () {
                 return text;
             },
-            set: function(aValue) {
+            set: function (aValue) {
                 if (text !== aValue) {
                     text = aValue;
                     applyText();
                 }
             }
         });
-        Object.defineProperty(this, "iconTextGap", {
-            get: function() {
+        Object.defineProperty(this, 'iconTextGap', {
+            get: function () {
                 return iconTextGap;
             },
-            set: function(aValue) {
+            set: function (aValue) {
                 iconTextGap = aValue;
             }
         });
         /**
          * Horizontal position of the text relative to the icon.
          */
-        Object.defineProperty(this, "horizontalTextPosition", {
-            get: function() {
+        Object.defineProperty(this, 'horizontalTextPosition', {
+            get: function () {
                 return horizontalTextPosition;
             },
-            set: function(aValue) {
+            set: function (aValue) {
                 if (horizontalTextPosition !== aValue) {
                     horizontalTextPosition = aValue;
                     applyPosition();
@@ -135,11 +135,11 @@ class ImageParagraph extends Widget {
         /**
          * Vertical position of the text relative to the icon.
          */
-        Object.defineProperty(this, "verticalTextPosition", {
-            get: function() {
+        Object.defineProperty(this, 'verticalTextPosition', {
+            get: function () {
                 return verticalTextPosition;
             },
-            set: function(aValue) {
+            set: function (aValue) {
                 if (verticalTextPosition !== aValue) {
                     verticalTextPosition = aValue;
                     applyPosition();
