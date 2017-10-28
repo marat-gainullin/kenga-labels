@@ -15,16 +15,10 @@
     display: block;
 }
 
-.p-image-paragraph-row > .p-image{
-    display: inline-block;
-}
-
-.p-image-paragraph-row > .p-paragraph {
-    display: inline;
-}
-
 .p-image-paragraph-row > .p-image,
 .p-image-paragraph-row > .p-paragraph {
+    display: inline-block;
+    margin: 0px;
     vertical-align: middle;
 }
 
