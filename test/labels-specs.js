@@ -129,69 +129,69 @@ describe('Labels Api', () => {
         expectWidget(label4, Font, Color, Cursor);
         label4.text = 'Sample label';
         expect(label4.iconTextGap).toEqual(4);
-        Resource.Icon.load('base/assets/binary-content.png', loaded => {
-            label4.icon = loaded;
-            done();
-        }, e => {
-            done.fail(e);
-        });
+        Resource.Icon.load('base/assets/binary-content.png')
+                .then((loaded) => {
+                    label4.icon = loaded;
+                })
+                .then(done)
+                .catch(done.fail);
     });
     it('Label.Markup', done => {
         const label = new Label();
         document.body.appendChild(label.element);
         label.text = 'Sample label';
         expect(label.iconTextGap).toEqual(4);
-        Resource.Icon.load('base/assets/binary-content.png', loaded => {
-            label.icon = loaded;
-            // defaults
-            // right text
-            expect(label.horizontalTextPosition).toEqual(Ui.HorizontalPosition.RIGHT);
-            expect(label.verticalTextPosition).toEqual(Ui.VerticalPosition.CENTER);
-            ((() => {
-                const image = label.element.firstElementChild;
-                const paragraph = label.element.lastElementChild;
-                expect(image.offsetLeft).toEqual(0);
-                expect(paragraph.offsetLeft).toEqual(16 + 4);
-            })());
-            // top and bottom
-            label.verticalTextPosition = Ui.VerticalPosition.BOTTOM;
-            label.verticalTextPosition = Ui.VerticalPosition.TOP;
-            // left text
-            label.horizontalTextPosition = Ui.HorizontalPosition.LEFT;
-            ((() => {
-                const image = label.element.lastElementChild;
-                const paragraph = label.element.firstElementChild;
-                expect(paragraph.offsetLeft).toEqual(0);
-                expect(image.offsetLeft).toEqual(paragraph.offsetWidth + 4);
-            })());
-            // top and bottom
-            label.verticalTextPosition = Ui.VerticalPosition.BOTTOM;
-            label.verticalTextPosition = Ui.VerticalPosition.TOP;
+        Resource.Icon.load('base/assets/binary-content.png')
+                .then((loaded) => {
+                    label.icon = loaded;
+                    // defaults
+                    // right text
+                    expect(label.horizontalTextPosition).toEqual(Ui.HorizontalPosition.RIGHT);
+                    expect(label.verticalTextPosition).toEqual(Ui.VerticalPosition.CENTER);
+                    ((() => {
+                        const image = label.element.firstElementChild;
+                        const paragraph = label.element.lastElementChild;
+                        expect(image.offsetLeft).toEqual(0);
+                        expect(paragraph.offsetLeft).toEqual(16 + 4);
+                    })());
+                    // top and bottom
+                    label.verticalTextPosition = Ui.VerticalPosition.BOTTOM;
+                    label.verticalTextPosition = Ui.VerticalPosition.TOP;
+                    // left text
+                    label.horizontalTextPosition = Ui.HorizontalPosition.LEFT;
+                    ((() => {
+                        const image = label.element.lastElementChild;
+                        const paragraph = label.element.firstElementChild;
+                        expect(paragraph.offsetLeft).toEqual(0);
+                        expect(image.offsetLeft).toEqual(paragraph.offsetWidth + 4);
+                    })());
+                    // top and bottom
+                    label.verticalTextPosition = Ui.VerticalPosition.BOTTOM;
+                    label.verticalTextPosition = Ui.VerticalPosition.TOP;
 
-            // center text
-            label.horizontalTextPosition = Ui.HorizontalPosition.CENTER;
+                    // center text
+                    label.horizontalTextPosition = Ui.HorizontalPosition.CENTER;
 
-            // top and bottom
-            label.verticalTextPosition = Ui.VerticalPosition.BOTTOM;
-            ((() => {
-                const image = label.element.firstElementChild;
-                const paragraph = label.element.lastElementChild;
-                expect(image.offsetTop).toEqual(0);
-                expect(paragraph.offsetTop).toEqual(16 + 4);
-            })());
-            label.verticalTextPosition = Ui.VerticalPosition.TOP;
-            ((() => {
-                const image = label.element.lastElementChild;
-                const paragraph = label.element.firstElementChild;
-                expect(image.offsetTop).toBeGreaterThan(paragraph.offsetTop);
-            })());
-            // center center
-            label.verticalTextPosition = Ui.VerticalPosition.CENTER;
+                    // top and bottom
+                    label.verticalTextPosition = Ui.VerticalPosition.BOTTOM;
+                    ((() => {
+                        const image = label.element.firstElementChild;
+                        const paragraph = label.element.lastElementChild;
+                        expect(image.offsetTop).toEqual(0);
+                        expect(paragraph.offsetTop).toEqual(16 + 4);
+                    })());
+                    label.verticalTextPosition = Ui.VerticalPosition.TOP;
+                    ((() => {
+                        const image = label.element.lastElementChild;
+                        const paragraph = label.element.firstElementChild;
+                        expect(image.offsetTop).toBeGreaterThan(paragraph.offsetTop);
+                    })());
+                    // center center
+                    label.verticalTextPosition = Ui.VerticalPosition.CENTER;
 
-            document.body.removeChild(label.element);
-            done();
-        }, e => {
-            done.fail(e);
-        });
+                    document.body.removeChild(label.element);
+                    done();
+                })
+                .catch(done.fail);
     });
 });
