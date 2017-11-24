@@ -1,4 +1,4 @@
-# kenga-labels
+# Kenga labels
 Kenga "image with text" widgets.
 
 ## Install
