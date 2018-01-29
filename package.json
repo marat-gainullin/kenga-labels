@@ -1,6 +1,6 @@
 {
   "name": "kenga-labels",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Kenga \"image with text\" widgets.",
   "main": "index.js",
   "repository": "https://github.com/marat-gainullin/kenga-labels.git",
@@ -42,6 +42,6 @@
     "yargs": "^9.0.1"
   },
   "dependencies": {
-    "kenga": "^0.0.24"
+    "kenga": "0.0.26"
   }
 }
