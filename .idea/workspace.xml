@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="049afaca-36ba-4086-8328-1567d6a1bf57" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/image-paragraph.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/image-paragraph.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
