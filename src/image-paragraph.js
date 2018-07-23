@@ -73,7 +73,7 @@ class ImageParagraph extends Widget {
         }
 
         function applyText() {
-            paragraph.innerText = text;
+            paragraph.innerText = text != null ? text : ''; // Some browsers treat null here as value to be converted to string as 'null'. Mobile Edge, for example.
         }
 
         applyPosition();
