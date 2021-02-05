@@ -6,7 +6,7 @@ class ImageParagraph extends Widget {
         if (arguments.length < 4)
             iconTextGap = 4;
         if (arguments.length < 3)
-            icon = null;
+            image = null;
         if (arguments.length < 2)
             text = '';
 

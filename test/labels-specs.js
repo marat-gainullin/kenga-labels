@@ -129,7 +129,7 @@ describe('Labels Api', () => {
         expectWidget(label4, Font, Color, Cursor);
         label4.text = 'Sample label';
         expect(label4.iconTextGap).toEqual(4);
-        Resource.Icon.load('base/assets/binary-content.png')
+        Resource.Icon.load('../assets/binary-content.png')
                 .then((loaded) => {
                     label4.icon = loaded;
                 })
@@ -141,7 +141,7 @@ describe('Labels Api', () => {
         document.body.appendChild(label.element);
         label.text = 'Sample label';
         expect(label.iconTextGap).toEqual(4);
-        Resource.Icon.load('base/assets/binary-content.png')
+        Resource.Icon.load('../assets/binary-content.png')
                 .then((loaded) => {
                     label.icon = loaded;
                     // defaults
