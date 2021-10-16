@@ -36,3 +36,7 @@
 .p-image-paragraph-row-bottom > .p-paragraph {
     vertical-align: bottom;
 }
+
+.p-image > * {
+    display: block;
+}
