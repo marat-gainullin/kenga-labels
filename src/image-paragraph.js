@@ -4,7 +4,7 @@ import Widget from 'kenga/widget';
 class ImageParagraph extends Widget {
     constructor(aElement, text, image, iconTextGap) {
         if (arguments.length < 4)
-            iconTextGap = 4;
+            iconTextGap = '4px';
         if (arguments.length < 3)
             image = null;
         if (arguments.length < 2)
@@ -39,14 +39,14 @@ class ImageParagraph extends Widget {
                 if (verticalTextPosition === Ui.VerticalPosition.TOP) {
                     if (image) {
                         self.element.insertBefore(paragraph, image);
-                        if (iconTextGap > 0 && text)
-                            image.style.marginTop = `${iconTextGap}px`;
+                        if (iconTextGap && text)
+                            image.style.marginTop = iconTextGap;
                     }
                 } else if (verticalTextPosition === Ui.VerticalPosition.BOTTOM || verticalTextPosition === Ui.VerticalPosition.CENTER) {
                     if (image) {
                         self.element.insertBefore(image, paragraph);
-                        if (iconTextGap > 0 && text)
-                            image.style.marginBottom = `${iconTextGap}px`;
+                        if (iconTextGap && text)
+                            image.style.marginBottom = iconTextGap;
                     }
                 } // else // value of 'verticalTextPosition' is unknown
             } else {
@@ -54,14 +54,14 @@ class ImageParagraph extends Widget {
                 if (horizontalTextPosition === Ui.HorizontalPosition.LEFT) {
                     if (image) {
                         self.element.insertBefore(paragraph, image);
-                        if (iconTextGap > 0 && text)
-                            image.style.marginLeft = `${iconTextGap}px`;
+                        if (iconTextGap && text)
+                            image.style.marginLeft = iconTextGap;
                     }
                 } else if (horizontalTextPosition === Ui.HorizontalPosition.RIGHT) {
                     if (image) {
                         self.element.insertBefore(image, paragraph);
-                        if (iconTextGap > 0 && text)
-                            image.style.marginRight = `${iconTextGap}px`;
+                        if (iconTextGap && text)
+                            image.style.marginRight = iconTextGap;
                     }
                 } // else // value of 'horizontalTextPosition' is unknown
                 if (verticalTextPosition === Ui.VerticalPosition.TOP) {
@@ -92,13 +92,13 @@ class ImageParagraph extends Widget {
             set: function (aValue) {
                 if (image !== aValue) {
                     if (image) {
-                        image.classList.remove('p-image');
                         self.element.removeChild(image);
+                        image.classList.remove('p-image');
                     }
                     image = typeof aValue === 'string' ? iconByString(aValue) : aValue;
                     if (image) {
-                        self.element.appendChild(image);
                         image.classList.add('p-image');
+                        self.element.appendChild(image);
                         applyPosition();
                     }
                 }
@@ -120,7 +120,8 @@ class ImageParagraph extends Widget {
                 return iconTextGap;
             },
             set: function (aValue) {
-                iconTextGap = aValue;
+                iconTextGap = typeof aValue === 'number' ? `${aValue}px` : aValue;
+                applyPosition();
             }
         });
         /**

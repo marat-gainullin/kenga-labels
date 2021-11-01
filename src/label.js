@@ -3,7 +3,7 @@ import ImageParagraph from './image-paragraph';
 class Label extends ImageParagraph {
     constructor(text, icon, iconTextGap) {
         if (arguments.length < 3)
-            iconTextGap = 4;
+            iconTextGap = '4px';
         if (arguments.length < 2)
             icon = null;
         if (arguments.length < 1)
