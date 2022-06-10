@@ -1,6 +1,6 @@
 {
   "name": "kenga-labels",
-  "version": "0.0.35",
+  "version": "0.0.36",
   "description": "Kenga \"image with text\" widgets.",
   "repository": "https://github.com/marat-gainullin/kenga-labels.git",
   "author": "marat-gainullin <mg@altsoft.biz>",
@@ -9,9 +9,11 @@
   "scripts": {
     "test": "rollup -c rollup.test.config.js",
     "lib": "rollup -c rollup.lib.config.js"
+    "clean": "rimraf ./build",
+    "upload": "rimraf ./build & rollup -c rollup.lib.config.js & npm publish ./build/lib"
   },
   "dependencies": {
-    "kenga": "0.0.48"
+    "kenga": "0.0.49"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
