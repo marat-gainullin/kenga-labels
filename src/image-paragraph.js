@@ -1,6 +1,12 @@
 import Ui from 'kenga/utils';
 import Widget from 'kenga/widget';
 
+function iconByString(aValue) {
+    const img = document.createElement('img');
+    img.src = aValue;
+    return img;
+}
+
 class ImageParagraph extends Widget {
     constructor(aElement, text, image, iconTextGap) {
         if (arguments.length < 4)
@@ -11,8 +17,8 @@ class ImageParagraph extends Widget {
             text = '';
 
         super(aElement);
-
         const self = this;
+        image = typeof image === 'string' ? iconByString(image) : image;
 
         let horizontalTextPosition = Ui.HorizontalPosition.RIGHT;
         let verticalTextPosition = Ui.VerticalPosition.CENTER;
@@ -78,12 +84,6 @@ class ImageParagraph extends Widget {
 
         applyPosition();
         applyText();
-
-        function iconByString(aValue) {
-            const img = document.createElement('img');
-            img.src = aValue;
-            return img;
-        }
 
         Object.defineProperty(this, 'icon', {
             get: function () {
