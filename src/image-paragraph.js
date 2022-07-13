@@ -18,7 +18,11 @@ class ImageParagraph extends Widget {
 
         super(aElement);
         const self = this;
-        image = typeof image === 'string' ? iconByString(image) : image;
+
+        if (typeof image === 'string') {
+          image = iconByString(image)
+          image.classList.add('p-image');
+        }
 
         let horizontalTextPosition = Ui.HorizontalPosition.RIGHT;
         let verticalTextPosition = Ui.VerticalPosition.CENTER;
