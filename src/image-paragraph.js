@@ -115,6 +115,7 @@ class ImageParagraph extends Widget {
             set: function (aValue) {
                 if (text !== aValue) {
                     text = aValue;
+                    applyPosition();
                     applyText();
                 }
             }
