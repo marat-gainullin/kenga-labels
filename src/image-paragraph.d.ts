@@ -1,5 +1,4 @@
 import Widget from 'kenga/widget'
-import Utils from 'kenga/utils'
 
 export default class ImageParagraph extends Widget {
   text: string
@@ -10,13 +9,14 @@ export default class ImageParagraph extends Widget {
   /**
    * Gap value in pixel between icon and text.
    */
-  iconTextGap: number
+  iconTextGap: number | string
   /**
    * Horizontal position of the text relative to the icon.
    */
-  horizontalTextPosition: Utils.HorizontalPosition
+  horizontalTextPosition: 'center' | 'left' | 'right'
+
   /**
    * Vertical position of the text relative to the icon.
    */
-  verticalTextPosition: Utils.VerticalPosition
+  verticalTextPosition: 'center' | 'top' | 'bottom'
 }
