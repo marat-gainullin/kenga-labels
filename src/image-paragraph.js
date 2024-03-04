@@ -15,6 +15,7 @@ class ImageParagraph extends Widget {
             image = null;
         if (arguments.length < 2)
             text = '';
+        let html = ''
 
         super(aElement);
         const self = this;
@@ -49,13 +50,13 @@ class ImageParagraph extends Widget {
                 if (verticalTextPosition === Ui.VerticalPosition.TOP) {
                     if (image) {
                         self.element.insertBefore(paragraph, image);
-                        if (iconTextGap && text)
+                        if (iconTextGap)
                             image.style.marginTop = iconTextGap;
                     }
                 } else if (verticalTextPosition === Ui.VerticalPosition.BOTTOM || verticalTextPosition === Ui.VerticalPosition.CENTER) {
                     if (image) {
                         self.element.insertBefore(image, paragraph);
-                        if (iconTextGap && text)
+                        if (iconTextGap)
                             image.style.marginBottom = iconTextGap;
                     }
                 } // else // value of 'verticalTextPosition' is unknown
@@ -64,13 +65,13 @@ class ImageParagraph extends Widget {
                 if (horizontalTextPosition === Ui.HorizontalPosition.LEFT) {
                     if (image) {
                         self.element.insertBefore(paragraph, image);
-                        if (iconTextGap && text)
+                        if (iconTextGap)
                             image.style.marginLeft = iconTextGap;
                     }
                 } else if (horizontalTextPosition === Ui.HorizontalPosition.RIGHT) {
                     if (image) {
                         self.element.insertBefore(image, paragraph);
-                        if (iconTextGap && text)
+                        if (iconTextGap)
                             image.style.marginRight = iconTextGap;
                     }
                 } // else // value of 'horizontalTextPosition' is unknown
@@ -84,6 +85,10 @@ class ImageParagraph extends Widget {
 
         function applyText() {
             paragraph.innerText = text != null ? text : ''; // Some browsers treat null here as value to be converted to string as 'null'. Mobile Edge, for example.
+        }
+
+        function applyHtml() {
+            paragraph.innerHTML = html != null ? html : ''; // Some browsers treat null here as value to be converted to string as 'null'. Mobile Edge, for example.
         }
 
         applyPosition();
@@ -118,6 +123,23 @@ class ImageParagraph extends Widget {
                     applyPosition();
                     applyText();
                 }
+            }
+        });
+        Object.defineProperty(this, 'html', {
+            get: function () {
+                return html;
+            },
+            set: function (aValue) {
+                if (html !== aValue) {
+                    html = aValue;
+                    applyPosition();
+                    applyHtml();
+                }
+            }
+        });
+        Object.defineProperty(this, 'paragraph', {
+            get: function () {
+                return paragraph;
             }
         });
         Object.defineProperty(this, 'iconTextGap', {

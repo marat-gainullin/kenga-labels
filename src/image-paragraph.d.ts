@@ -2,10 +2,13 @@ import Widget from 'kenga/widget'
 
 export default class ImageParagraph extends Widget {
   text: string
+  html: string
   /**
    * An element (e.g. img) or uri to an icon.
    */
   icon: HTMLElement | string
+
+  readonly paragraph: HTMLElement
   /**
    * Gap value in pixel between icon and text.
    */
