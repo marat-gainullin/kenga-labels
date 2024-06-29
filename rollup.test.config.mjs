@@ -7,10 +7,11 @@ import path from "path";
 import assert from "assert";
 import shell from 'shelljs';
 
+const srcDir = 'src';
 const testDir = 'test';
 const buildDir = 'build';
 
-const config = {
+export default args => ({
     input: `${testDir}/labels-specs.js`,
     output: {
         file: `${buildDir}/labels-specs.js`,
@@ -34,6 +35,4 @@ const config = {
             }
         }
     ]
-};
-
-export default config;
+});

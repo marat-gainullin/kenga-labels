@@ -118,17 +118,17 @@ describe('Labels Api', () => {
         expectImageParagraph(label2, Ui);
         expect(label2.text).toEqual('txt');
         expect(label2.icon).toBeNull();
-        expect(label2.iconTextGap).toEqual(4);
+        expect(label2.iconTextGap).toEqual('4px');
         const label3 = new Label('txt');
         expectImageParagraph(label3, Ui);
         expect(label3.text).toEqual('txt');
         expect(label3.icon).toBeNull();
-        expect(label3.iconTextGap).toEqual(4);
+        expect(label3.iconTextGap).toEqual('4px');
         const label4 = new Label();
         expectImageParagraph(label4, Ui);
         expectWidget(label4, Font, Color, Cursor);
         label4.text = 'Sample label';
-        expect(label4.iconTextGap).toEqual(4);
+        expect(label4.iconTextGap).toEqual('4px');
         Resource.Icon.load('../assets/binary-content.png')
                 .then((loaded) => {
                     label4.icon = loaded;
@@ -140,7 +140,7 @@ describe('Labels Api', () => {
         const label = new Label();
         document.body.appendChild(label.element);
         label.text = 'Sample label';
-        expect(label.iconTextGap).toEqual(4);
+        expect(label.iconTextGap).toEqual('4px');
         Resource.Icon.load('../assets/binary-content.png')
                 .then((loaded) => {
                     label.icon = loaded;
